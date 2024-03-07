@@ -24,9 +24,12 @@ button {
   align-items: center;
   justify-content: space-between;
   background-color: #101820;
-  color: white;
+  color: #fff;
 }
 
+body {
+  background-color: #eef1ee;
+}
 main {
   max-width: 800px;
   width: 80%;
@@ -40,6 +43,7 @@ main {
   padding: 16px;
   border: 1px solid black;
   border-radius: 10px;
+  background-color: #fff;
 }
 
 .input_section > h2 {
@@ -144,10 +148,13 @@ main {
 }
 
 .book_shelf {
+  width: 100%;
   margin: 16px 0 0 0;
   border: 1px solid black;
   padding: 16px;
   border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.06);
 }
 
 .book_shelf > h2 {
@@ -195,4 +202,16 @@ p {
 
 .search-icon {
   padding: 0 12px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .flex {
+    display: block;
+  }
 }

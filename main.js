@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   submitForm.addEventListener("submit", function (event) {
     event.preventDefault();
     tambahBukuKeRak();
+    submitForm.reset();
   });
   if (isStorageExist()) {
     loadDataFromStorage();
@@ -64,6 +65,10 @@ function tambahBukuKeRak() {
 
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
+
+  judulBuku.value = "";
+  tahunBuku.value = "";
+  penulisBuku.value = "";
 }
 
 document.addEventListener(RENDER_EVENT, function () {
@@ -99,10 +104,8 @@ function tambahCompletedBook(bukuObjek) {
   bookYear.innerText = "Tahun: " + bukuObjek.year;
 
   const container = document.createElement("article");
-  container.classList.add("book_item flex");
-  const bookDetailContainer = document.createElement("div");
+  container.classList.add("book_item");
   container.append(bookTitle, bookAuthor, bookYear);
-  container.setAttribute("id", `buku-${bukuObjek.id}`);
 
   const switchButton = document.createElement("button");
   switchButton.classList.add("green");
