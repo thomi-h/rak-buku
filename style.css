@@ -31,13 +31,14 @@ body {
   background-color: #eef1ee;
 }
 main {
-  max-width: 800px;
   width: 80%;
   margin: 0 auto;
   padding: 16px;
 }
 
 .input_section {
+  margin: 0 auto;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -48,7 +49,7 @@ main {
 
 .input_section > h2 {
   text-align: center;
-  color: cornflowerblue;
+  color: #292929;
 }
 
 .input_section > form > .input {
@@ -56,7 +57,7 @@ main {
 }
 
 .input_section > form > button {
-  background-color: cornflowerblue;
+  background-color: #101820;
   color: white;
   border: 0;
   border-radius: 5px;
@@ -64,6 +65,11 @@ main {
   width: 100%;
   padding: 8px;
   cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+.input_section > form > button:hover {
+  background-color: rgba(16, 24, 32, 0.9);
 }
 
 .input_section > form > button > span {
@@ -78,7 +84,7 @@ main {
 }
 
 .input_section > form > .input > label {
-  color: cornflowerblue;
+  color: #292929;
   font-weight: bold;
 }
 
@@ -89,7 +95,7 @@ main {
 }
 
 .input_section > form > .input_inline > label {
-  color: cornflowerblue;
+  color: #292929;
   font-weight: bold;
   margin-right: 10px;
 }
@@ -149,7 +155,7 @@ main {
 
 .book_shelf {
   width: 100%;
-  margin: 16px 0 0 0;
+  margin: 32px 0 0 0;
   border: 1px solid black;
   padding: 16px;
   border-radius: 10px;
@@ -158,7 +164,7 @@ main {
 }
 
 .book_shelf > h2 {
-  color: cornflowerblue;
+  color: #292929;
 }
 
 .book_shelf > .book_list {
@@ -207,7 +213,7 @@ p {
 .flex {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
 }
 
 @media screen and (max-width: 768px) {
