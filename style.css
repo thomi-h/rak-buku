@@ -8,7 +8,7 @@
 body,
 input,
 button {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 input,
@@ -19,7 +19,7 @@ button {
 .head_bar {
   position: sticky;
   top: 0;
-  padding: 12px;
+  padding: 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -52,7 +52,7 @@ main {
   color: #292929;
 }
 
-.input_section > form > .input {
+.input_section > form > .text_input {
   margin: 8px 0;
 }
 
@@ -76,17 +76,20 @@ main {
   font-weight: bold;
 }
 
-.input_section > form > .input > input {
+.input_section > form > .text_input > input {
   display: block;
   width: 100%;
   padding: 8px;
   border-radius: 5px;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
 }
 
-.input_section > form > .input > label {
+/* .input_section > form > .input > label {
   color: #292929;
   font-weight: bold;
-}
+} */
 
 .input_section > form > .input_inline {
   margin: 12px 0;
@@ -110,26 +113,15 @@ main {
   border-radius: 10px;
 } */
 
-.search_section > h2 {
-  color: cornflowerblue;
-}
-
 .search_section > form {
-  padding: 16px;
   width: 100%;
   display: flex;
   grid-template-columns: auto 1fr 0.5fr;
   gap: 12px;
 }
 
-.search_section > form > label {
-  display: flex;
-  align-items: center;
-}
-
-.search_section > form > input {
-  padding: 5px;
-  border-radius: 5px;
+.search_section > form > div > input {
+  padding: 8px;
   line-height: 1.8;
   background-color: transparent;
   color: white;
@@ -137,15 +129,34 @@ main {
   border: 0;
 }
 
-.search_section > form > input::placeholder {
-  color: white;
+.text_input::after,
+.search_input::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  border-radius: 80px;
+  transition: all ease 0.5s;
+}
+
+.text_input:has(input:focus)::after,
+.search_input:has(input:focus)::after {
+  width: 100%;
+}
+
+.search_input::after {
+  background-color: #eef1ee;
+}
+
+.text_input::after {
+  background-color: #292929;
 }
 
 .search_section > form > button {
   background-color: transparent;
   color: white;
   border: 0;
-  border-radius: 1000px;
+  border-radius: 100%;
   cursor: pointer;
 }
 
@@ -183,11 +194,15 @@ p {
   margin: 8px 0;
 }
 
+.book_shelf > .book_list > .book_item > .action {
+  display: flex;
+  gap: 8px;
+}
+
 .book_shelf > .book_list > .book_item > .action > button {
   border: 0;
-  padding: 5px;
-  margin: 0 5px 0 0;
-  border-radius: 5px;
+  padding: 8px;
+  border-radius: 8px;
   cursor: pointer;
 }
 

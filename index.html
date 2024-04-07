@@ -24,7 +24,9 @@
       <h1 class="head_bar__title">Bookshelf Apps</h1>
       <section class="search_section">
         <form id="searchBook">
-          <input id="searchBookTitle" placeholder="Judul buku" type="text" />
+          <div class="search_input">
+            <input id="searchBookTitle" placeholder="Judul buku" type="text" />
+          </div>
           <button id="searchSubmit" type="submit">
             <span class="material-symbols-outlined vertical-middle search-icon"
               >search</span
@@ -37,17 +39,26 @@
       <section class="input_section">
         <h2>Masukkan Buku Baru</h2>
         <form id="inputBook">
-          <div class="input">
-            <label for="inputBookTitle">Judul</label>
-            <input id="inputBookTitle" type="text" required />
+          <div class="text_input">
+            <!-- <label for="inputBookTitle">Judul</label> -->
+            <input
+              id="inputBookTitle"
+              type="text"
+              placeholder="Judul Buku"
+              required
+            />
           </div>
-          <div class="input">
-            <label for="inputBookAuthor">Penulis</label>
-            <input id="inputBookAuthor" type="text" required />
+          <div class="text_input">
+            <!-- <label for="inputBookAuthor">Penulis</label> -->
+            <input id="inputBookAuthor" type="text" placeholder="Penulis" />
           </div>
-          <div class="input">
-            <label for="inputBookYear">Tahun</label>
-            <input id="inputBookYear" type="number" required />
+          <div class="text_input">
+            <!-- <label for="inputBookYear">Tahun</label> -->
+            <input
+              id="inputBookYear"
+              type="number"
+              placeholder="Tahun terbit"
+            />
           </div>
           <div class="input_inline">
             <label for="inputBookIsComplete">Selesai dibaca</label>

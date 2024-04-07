@@ -1,5 +1,5 @@
 const rakBuku = [];
-const RENDER_EVENT = "render-buku";
+const RENDER_EVENT = 'render-buku';
 
 function generatedId() {
   return +new Date();
@@ -16,9 +16,9 @@ function generatedBuku(id, title, author, year, isComplete) {
   };
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const submitForm = document.getElementById("inputBook");
-  submitForm.addEventListener("submit", function (event) {
+document.addEventListener('DOMContentLoaded', function () {
+  const submitForm = document.getElementById('inputBook');
+  submitForm.addEventListener('submit', function (event) {
     event.preventDefault();
     tambahBukuKeRak();
     submitForm.reset();
@@ -27,30 +27,30 @@ document.addEventListener("DOMContentLoaded", function () {
     loadDataFromStorage();
   }
 
-  const searchInput = document.getElementById("searchBook");
-  searchInput.addEventListener("submit", function (event) {
+  const searchInput = document.getElementById('searchBook');
+  searchInput.addEventListener('submit', function (event) {
     event.preventDefault();
-    const rak = document.getElementById("rak");
-    rak.scrollIntoView({ behavior: "smooth", block: "center" });
-    const titleSearchInput = document.getElementById("searchBookTitle");
+    const rak = document.getElementById('rak');
+    rak.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const titleSearchInput = document.getElementById('searchBookTitle');
 
-    let query = document.querySelectorAll(".book_item");
+    let query = document.querySelectorAll('.book_item');
 
     for (const searchBook of query) {
       if (searchBook.childNodes[0].innerText.includes(titleSearchInput.value)) {
-        searchBook.style.display = "";
+        searchBook.style.display = '';
       } else {
-        searchBook.style.display = "none";
+        searchBook.style.display = 'none';
       }
     }
   });
 });
 
 function tambahBukuKeRak() {
-  const judulBuku = document.getElementById("inputBookTitle").value;
-  const tahunBuku = document.getElementById("inputBookYear").value;
-  const penulisBuku = document.getElementById("inputBookAuthor").value;
-  const isComplete = document.getElementById("inputBookIsComplete").checked;
+  const judulBuku = document.getElementById('inputBookTitle').value;
+  const tahunBuku = document.getElementById('inputBookYear').value;
+  const penulisBuku = document.getElementById('inputBookAuthor').value;
+  const isComplete = document.getElementById('inputBookIsComplete').checked;
 
   const Id = generatedId();
   const bukuObjek = generatedBuku(
@@ -58,7 +58,7 @@ function tambahBukuKeRak() {
     judulBuku,
     penulisBuku,
     tahunBuku,
-    isComplete
+    isComplete,
   );
 
   rakBuku.push(bukuObjek);
@@ -66,21 +66,21 @@ function tambahBukuKeRak() {
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
 
-  judulBuku.value = "";
-  tahunBuku.value = "";
-  penulisBuku.value = "";
+  judulBuku.value = '';
+  tahunBuku.value = '';
+  penulisBuku.value = '';
 }
 
 document.addEventListener(RENDER_EVENT, function () {
-  const completeBookShelf = document.getElementById("completeBookshelfList");
+  const completeBookShelf = document.getElementById('completeBookshelfList');
 
   const incompleteBookShelf = document.getElementById(
-    "incompleteBookshelfList"
+    'incompleteBookshelfList',
   );
 
   // clearing list item
-  completeBookShelf.innerHTML = "";
-  incompleteBookShelf.innerHTML = "";
+  completeBookShelf.innerHTML = '';
+  incompleteBookShelf.innerHTML = '';
 
   for (const buku of rakBuku) {
     const book = tambahCompletedBook(buku);
@@ -93,44 +93,44 @@ document.addEventListener(RENDER_EVENT, function () {
 });
 
 function tambahCompletedBook(bukuObjek) {
-  const bookTitle = document.createElement("h3");
-  bookTitle.classList.add("book_title");
+  const bookTitle = document.createElement('h3');
+  bookTitle.classList.add('book_title');
   bookTitle.innerText = bukuObjek.title;
 
-  const bookAuthor = document.createElement("p");
-  bookAuthor.innerText = "Penulis: " + bukuObjek.author;
+  const bookAuthor = document.createElement('p');
+  bookAuthor.innerText = 'Penulis: ' + bukuObjek.author;
 
-  const bookYear = document.createElement("p");
-  bookYear.innerText = "Tahun: " + bukuObjek.year;
+  const bookYear = document.createElement('p');
+  bookYear.innerText = 'Tahun: ' + bukuObjek.year;
 
-  const container = document.createElement("article");
-  container.classList.add("book_item");
+  const container = document.createElement('article');
+  container.classList.add('book_item');
   container.append(bookTitle, bookAuthor, bookYear);
 
-  const switchButton = document.createElement("button");
-  switchButton.classList.add("green");
+  const switchButton = document.createElement('button');
+  switchButton.classList.add('green');
 
   if (bukuObjek.isComplete) {
-    switchButton.innerHTML = `<span class="vertical-middle">Belum selesai</span>&nbsp;<span class="material-symbols-outlined vertical-middle">replay</span>`;
+    switchButton.innerHTML = `<span class="vertical-middle"></span>&nbsp;<span class="material-symbols-outlined vertical-middle">replay</span>`;
   } else {
-    switchButton.innerHTML = `<span class="vertical-middle">Selesai</span>&nbsp;<span class="material-symbols-outlined vertical-middle">done</span>`;
+    switchButton.innerHTML = `<span class="vertical-middle"></span>&nbsp;<span class="material-symbols-outlined vertical-middle">done</span>`;
   }
 
-  switchButton.addEventListener("click", function () {
+  switchButton.addEventListener('click', function () {
     switchCompleted(bukuObjek.id);
   });
 
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("red");
-  deleteButton.innerHTML = `<span class="vertical-middle">Hapus</span>&nbsp;<span class="material-symbols-outlined vertical-middle">delete
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('red');
+  deleteButton.innerHTML = `<span class="vertical-middle"></span>&nbsp;<span class="material-symbols-outlined vertical-middle">delete
 </span>`;
 
-  deleteButton.addEventListener("click", function () {
+  deleteButton.addEventListener('click', function () {
     deleteBook(bukuObjek.id);
   });
 
-  const actionContainer = document.createElement("div");
-  actionContainer.classList.add("action");
+  const actionContainer = document.createElement('div');
+  actionContainer.classList.add('action');
   actionContainer.append(switchButton, deleteButton);
 
   container.append(actionContainer);
@@ -178,7 +178,7 @@ function findBookIndex(bookId) {
   return -1;
 }
 
-const STORAGE_KEY = "BOOKSHELF_APPS";
+const STORAGE_KEY = 'BOOKSHELF_APPS';
 
 function saveData() {
   if (isStorageExist()) {
@@ -190,7 +190,7 @@ function saveData() {
 
 function isStorageExist() {
   if (typeof Storage === undefined) {
-    alert("Browser tidak mendukung local storage");
+    alert('Browser tidak mendukung local storage');
     return false;
   }
   return true;
